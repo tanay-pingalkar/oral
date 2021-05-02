@@ -1,21 +1,21 @@
 import chalk from "chalk";
 import { fail, pass } from "../utils/prints";
 
-export function True(): any {
+export function True(): Function {
   return function (
     target: Object,
     key: string,
     descriptor: PropertyDescriptor
-  ): any {
+  ): PropertyDescriptor {
     const original = descriptor.value;
     descriptor.value = function (...args: any[]) {
       const found = original.apply(this, args);
       if (!found) {
-        fail(key);
+        fail(key, "True");
         console.log(
           chalk.green(`given :- true \n`) + chalk.red(`found :- ${found} \n`)
         );
-      } else pass(key);
+      } else pass(key, "True");
       return found;
     };
     return descriptor;

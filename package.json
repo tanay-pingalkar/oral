@@ -1,8 +1,9 @@
 {
   "name": "decorator",
   "version": "1.0.0",
-  "main": "dist/main.js",
+  "main": "./dist/main.js",
   "license": "MIT",
+  "types": "./dist/main.d.ts",
   "scripts": {
     "dev": "tsc --watch",
     "build": "tsc",

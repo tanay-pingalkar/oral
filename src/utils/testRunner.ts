@@ -37,5 +37,6 @@ export const testRunner = () => {
         test[value]();
       });
     }
+    delete require.cache[require.resolve(fileName)];
   });
 };

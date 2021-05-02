@@ -1,12 +1,12 @@
 import chalk from "chalk";
 import { fail, pass } from "../utils/prints";
 
-export function Equal(given: any): any {
+export function Equal<type>(given: any | type): Function {
   return function (
     target: Object,
     key: string,
     descriptor: PropertyDescriptor
-  ): any {
+  ): PropertyDescriptor {
     const original = descriptor.value;
     descriptor.value = function (...args: any[]) {
       const found = original.apply(this, args);
@@ -15,15 +15,15 @@ export function Equal(given: any): any {
           typeof found === "object" &&
           JSON.stringify(found) === JSON.stringify(given)
         ) {
-          pass(key);
+          pass(key, "Equal");
         } else {
-          fail(key);
+          fail(key, "Equal");
           console.log(
             chalk.green(`given :- ${given} \n`) +
               chalk.red(`found :- ${found} \n`)
           );
         }
-      } else pass(key);
+      } else pass(key, "Equal");
       return found;
     };
     return descriptor;

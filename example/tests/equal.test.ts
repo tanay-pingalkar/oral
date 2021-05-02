@@ -16,12 +16,8 @@ export class Test {
     return "this is not good";
   }
 
-  @Equal(["lol"])
+  @Equal(["lol", "ball", "troll", "chall"])
   arrayTest() {
     return ["lol"];
-  }
-
-  lol() {
-    return "lol";
   }
 }

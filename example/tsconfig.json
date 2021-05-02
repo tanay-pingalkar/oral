@@ -3,6 +3,7 @@
     "outDir": "dist",
     "target": "ES6",
     "moduleResolution": "node",
-    "experimentalDecorators": true
+    "experimentalDecorators": true,
+    "esModuleInterop": true
   }
 }

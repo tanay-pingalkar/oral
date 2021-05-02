@@ -32,10 +32,10 @@ run `oral` in terminal and the output of your test.
 oral `location of config file` `--watch`
 
 ## more decorators
-`@Contain()` checks of given content contain found content.
-`@Match()` matches on based on regex
-`@True()` checks if test returs true
-`@False()` checks of test return false
+`@Contain()` checks of given content contain found content. <br>
+`@Match()` matches on based on regex <br>
+`@True()` checks if test returs true <br>
+`@False()` checks of test return false <br>
 
 more coming soon.
 

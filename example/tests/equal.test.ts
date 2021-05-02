@@ -1,8 +1,10 @@
-import { Equal } from "oral";
+import { Equal, Suit } from "oral";
 
 function add(a: number, b: number) {
   return a + b;
 }
+
+@Suit("gooooo")
 export class Test {
   @Equal(3)
   addTest() {

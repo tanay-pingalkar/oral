@@ -4,6 +4,7 @@ export { True } from "./decorators/true";
 export { Match } from "./decorators/match";
 export { False } from "./decorators/false";
 export { Contain } from "./decorators/contain";
+export { Suit } from "./decorators/suit";
 
 import { argParser } from "./utils/argparser";
 import { finalConfig } from "./utils/finalConfig";
@@ -11,6 +12,7 @@ import { testFiles } from "./utils/testFiles";
 import { testRunner } from "./utils/testRunner";
 import chokidar from "chokidar";
 import chalk from "chalk";
+import { centerString } from "./utils/centerString";
 
 // this is default configuration
 global.Config = {
@@ -19,7 +21,7 @@ global.Config = {
   watch: false,
   coverageDir: "/",
   testDir: "/",
-  watchDir: "./",
+  watchDir: "/",
 };
 
 export const oral = (args: Array<any>) => {
@@ -32,15 +34,17 @@ export const oral = (args: Array<any>) => {
   if (global.Config.watch) {
     /* watch mode logic*/
     testRunner();
-    console.log(chalk.blue("+----------------watchmode-------------------+"));
-    const watcher = chokidar.watch(process.cwd() + "/", {
+    console.log(chalk.bgGrey(centerString("watchmode on".split(""), 50)));
+    const watcher = chokidar.watch(process.cwd() + global.Config.watchDir, {
       ignored: /node_modules/g,
       ignoreInitial: true,
     });
     watcher.on("all", async (path) => {
       testFiles();
       testRunner();
-      console.log(chalk.blue("+----------------------------------------+"));
+      console.log(
+        chalk.bgGrey(centerString("watching for changes".split(""), 50))
+      );
     });
   } else {
     // run all the tests at once

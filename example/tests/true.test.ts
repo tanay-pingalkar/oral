@@ -1,6 +1,8 @@
-import { True } from "oral";
+import { Suit, True } from "oral";
 import { False } from "oral";
-class Test {
+
+@Suit("this")
+export class Test {
   @True()
   @False()
   trueTest() {

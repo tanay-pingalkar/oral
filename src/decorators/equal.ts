@@ -19,8 +19,7 @@ export function Equal<type>(given: any | type): Function {
         } else {
           fail(key, "Equal");
           console.log(
-            chalk.green(`given :- ${given} \n`) +
-              chalk.red(`found :- ${found} \n`)
+            chalk.green(`given :- ${given} \n`) + chalk.red(`found :- ${found}`)
           );
         }
       } else pass(key, "Equal");

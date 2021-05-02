@@ -13,7 +13,7 @@ export function False(): Function {
       if (found) {
         fail(key, "False");
         console.log(
-          chalk.green(`given :- false \n`) + chalk.red(`found :- ${found} \n`)
+          chalk.green(`given :- false \n`) + chalk.red(`found :- ${found}`)
         );
       } else pass(key, "False");
       return found;

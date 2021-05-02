@@ -13,7 +13,7 @@ export function True(): Function {
       if (!found) {
         fail(key, "True");
         console.log(
-          chalk.green(`given :- true \n`) + chalk.red(`found :- ${found} \n`)
+          chalk.green(`given :- true \n`) + chalk.red(`found :- ${found}`)
         );
       } else pass(key, "True");
       return found;

@@ -26,8 +26,8 @@ export function Contain<type>(
           fail(key, "Contain:Array");
           console.log(
             chalk.red(`expected array but found ${typeof found} \n `),
-            chalk.green(`given :- ${given} \n`),
-            chalk.red(`found :- ${found} \n `)
+            chalk.green(`given :- ${given}\n`),
+            chalk.red(`found :- ${found}`)
           );
         }
         if (JSON.stringify(given) === JSON.stringify(newArray)) {
@@ -36,7 +36,7 @@ export function Contain<type>(
           fail(key, "Contain:Array");
           console.log(
             chalk.green(`given :- ${given} \n`),
-            chalk.red(`found :- ${found} \n`)
+            chalk.red(`found :- ${found}`)
           );
         }
       } else if (
@@ -61,7 +61,7 @@ export function Contain<type>(
             fail(key, "Contain:Object");
             console.log(
               chalk.green(`given :-\n${JSON.stringify(given, null, " ")} \n`),
-              chalk.red(`found :-\n${JSON.stringify(found, null, " ")} \n`)
+              chalk.red(`found :-\n${JSON.stringify(found, null, " ")}`)
             );
           }
         } else {
@@ -69,7 +69,7 @@ export function Contain<type>(
           console.log(
             chalk.red(`expected object but found ${typeof found} \n `),
             chalk.green(`given :-\n${JSON.stringify(given, null, " ")} `),
-            chalk.red(`found :-\n${JSON.stringify(found, null, " ")} \n`)
+            chalk.red(`found :-\n${JSON.stringify(found, null, " ")}`)
           );
         }
       }

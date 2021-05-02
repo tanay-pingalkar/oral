@@ -10,6 +10,7 @@ export const argParser = (args: Array<string>): any => {
       "--watch": Boolean,
       "--silent": Boolean,
       "--coverage": Boolean,
+      "--watchDir": String,
     },
     {
       argv: args.splice(2),

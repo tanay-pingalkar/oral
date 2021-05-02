@@ -12,7 +12,7 @@ export const pass = (key: string, name: string) => {
 
 export const fail = (key: string, name: string) => {
   console.log(
-    chalk.bgRed(chalk.black(chalk.bold("\n fail "))) +
+    chalk.bgRed(chalk.black(chalk.bold(" fail "))) +
       " " +
       key +
       " " +

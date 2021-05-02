@@ -14,7 +14,7 @@ export function Match(regex: RegExp): Function {
         fail(key, "Match");
         console.log(
           chalk.green(`given pattern :- ${regex}\n`) +
-            chalk.red(`doesnt match :- ${found} \n`)
+            chalk.red(`doesnt match :- ${found}`)
         );
       } else pass(key, "Match");
       return found;

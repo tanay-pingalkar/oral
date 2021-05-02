@@ -1,7 +1,8 @@
-import { Contain } from "oral";
+import { Contain, Suit } from "oral";
 
+@Suit("this is equal test")
 export class Test {
-  @Contain([1, 2])
+  @Contain([1, 2, 3, 4])
   containTest() {
     return [1, 2, 3, 4];
   }

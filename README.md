@@ -17,6 +17,8 @@ import { Equal } from "oral";
 function add(a: number, b: number) {
   return a + b;
 }
+
+@Suit("this is option, it will atomatically prints the name of the class as description")
 export class Test {
   @Equal(3)
   addTest() {

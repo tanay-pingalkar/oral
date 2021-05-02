@@ -29,7 +29,7 @@ run `oral` in terminal and the output of your test.
 
 
 ## cli options
-oral `location of config file` `--watch`
+oral `location of config file` `--watch` `--testDir ./tests`
 
 ## more decorators
 `@Contain()` checks of given content contain found content. <br>

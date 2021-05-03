@@ -57,9 +57,7 @@ oral `location of config file` `--watch` `--testDir ./tests`
 `@True()` checks if test returs true <br>
 `@False()` checks if test return false <br>
 `@GreaterThan()` checks if found number is greater than given number <br>
-`@LreaterThan()` checks if found number is less than given number <br>
-
-
+`@LessThan()` checks if found number is less than given number <br>
 
 more coming soon.
 

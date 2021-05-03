@@ -6,13 +6,13 @@ an open source decorator based testing framework for typescript
 - watch mode
 
 ## install
-currently this repo is not released yet so you have to fork and clone the repo before using it.
+currently this repo is not released yet so you have to fork and clone the repo before using it. <br>
 run `npm install` <br>
 run `cd examples && npm install` <br>
 run `oral` <br>
 
 ## how to write tests in oral
-writing tests in oral is same as writing tests in other framework but in oral, there is no describe and no it, instead of that, it usesname of you class as description of you tests. To get started with it 
+writing tests in oral is same as writing tests in other framework but in oral, there is no describe and no it, instead of that, it usesname of you class as description of you tests. To get started with it  <br>
 ``` touch oral.config.ts` && mkdir tests```
 
 - oral.config.ts

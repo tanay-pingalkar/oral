@@ -24,6 +24,8 @@ export function Contain<type>(
           });
         } else {
           fail(key, "Contain:Array");
+          global.tests[target["index"]].failed =
+            global.tests[target["index"]].failed + 1;
           console.log(
             chalk.red(`expected array but found ${typeof found} \n `),
             chalk.green(`given :- ${given}\n`),
@@ -32,8 +34,12 @@ export function Contain<type>(
         }
         if (JSON.stringify(given) === JSON.stringify(newArray)) {
           pass(key, "Contain:Array");
+          global.tests[target["index"]].passed =
+            global.tests[target["index"]].passed + 1;
         } else {
           fail(key, "Contain:Array");
+          global.tests[target["index"]].failed =
+            global.tests[target["index"]].failed + 1;
           console.log(
             chalk.green(`given :- ${given} \n`),
             chalk.red(`found :- ${found}`)
@@ -57,8 +63,12 @@ export function Contain<type>(
           }
           if (Object.keys(newGiven).length === i) {
             pass(key, "Contain:Object");
+            global.tests[target["index"]].passed =
+              global.tests[target["index"]].passed + 1;
           } else {
             fail(key, "Contain:Object");
+            global.tests[target["index"]].failed =
+              global.tests[target["index"]].failed + 1;
             console.log(
               chalk.green(`given :-\n${JSON.stringify(given, null, " ")} \n`),
               chalk.red(`found :-\n${JSON.stringify(found, null, " ")}`)
@@ -66,6 +76,8 @@ export function Contain<type>(
           }
         } else {
           fail(key, "Contain:Object");
+          global.tests[target["index"]].failed =
+            global.tests[target["index"]].failed + 1;
           console.log(
             chalk.red(`expected object but found ${typeof found} \n `),
             chalk.green(`given :-\n${JSON.stringify(given, null, " ")} `),

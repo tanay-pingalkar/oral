@@ -1,6 +1,6 @@
 import { Contain, Suit } from "oral";
 
-@Suit("this is equal test")
+@Suit("this is  Contain decorator test")
 export class Test {
   @Contain([1, 2, 3, 4])
   containTest() {
@@ -17,8 +17,8 @@ export class Test {
     return { name: "tanay", title: "holo", description: "homecoming" };
   }
 
-  @Contain({ name: "tanay", title: "holo" })
-  cotainObjFailTest() {
-    return { name: "tanay", title: "wrong title", description: "homecoming" };
-  }
+  // @Contain({ name: "tanay", title: "holo" })
+  // cotainObjFailTest() {
+  //   return { name: "tanay", title: "wrong title", description: "homecoming" };
+  // }
 }

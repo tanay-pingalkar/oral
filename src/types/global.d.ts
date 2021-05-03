@@ -1,12 +1,17 @@
-import { Equal, Match, True } from "../main";
-
 export {};
 declare global {
   namespace NodeJS {
     interface Global {
       Config: config;
+      tests: Array<suit>;
     }
   }
+}
+
+export declare interface suit {
+  name: string;
+  passed: number;
+  failed: number;
 }
 
 declare interface config {
@@ -16,4 +21,11 @@ declare interface config {
   coverageDir: string;
   testDir: string;
   watchDir: string;
+}
+
+export declare interface testInfo {
+  passed: number;
+  failed: number;
+  suits: number;
+  tests: number;
 }

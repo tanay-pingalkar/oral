@@ -11,8 +11,14 @@ export function Suit(description?: string) {
     return centerString(array, 50);
   }
   return function <T extends { new (...args: any[]): {} }>(constructor: T) {
+    const num = global.tests.push({
+      name: constructor.name,
+      passed: 0,
+      failed: 0,
+    });
+    constructor.prototype.index = num - 1;
     console.log(
-      `${chalk.bold.bgMagentaBright.black(whatDescription(constructor.name))}`
+      `\n${chalk.bold.bgMagentaBright.black(whatDescription(constructor.name))}`
     );
   };
 }

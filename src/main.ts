@@ -5,6 +5,8 @@ export { Match } from "./decorators/match";
 export { False } from "./decorators/false";
 export { Contain } from "./decorators/contain";
 export { Suit } from "./decorators/suit";
+export { GreaterThan } from "./decorators/greaterThan";
+export { LessThan } from "./decorators/lessThan";
 
 import { argParser } from "./utils/argparser";
 import { finalConfig } from "./utils/finalConfig";
@@ -24,7 +26,9 @@ global.Config = {
   watchDir: "/",
 };
 
-export const oral = (args: Array<any>) => {
+global.tests = [];
+
+export const oral = (args: Array<string>) => {
   args = argParser(args);
   // confirms config based on arguments in cli and configuration file
   finalConfig(args);
@@ -33,6 +37,7 @@ export const oral = (args: Array<any>) => {
 
   if (global.Config.watch) {
     /* watch mode logic*/
+
     testRunner();
     console.log(chalk.bgGrey(centerString("watchmode on".split(""), 50)));
     const watcher = chokidar.watch(process.cwd() + global.Config.watchDir, {
@@ -40,6 +45,9 @@ export const oral = (args: Array<any>) => {
       ignoreInitial: true,
     });
     watcher.on("all", async (path) => {
+      console.clear();
+      global.Config.testFiles = [];
+      global.tests = [];
       testFiles();
       testRunner();
       console.log(

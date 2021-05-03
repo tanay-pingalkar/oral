@@ -10,8 +10,8 @@ export const testFiles = (
   }
   const files = fs.readdirSync(startPath);
   for (let i = 0; i < files.length; i++) {
-    var filename = path.join(startPath, files[i]);
-    var stat = fs.lstatSync(filename);
+    let filename = path.join(startPath, files[i]);
+    let stat = fs.lstatSync(filename);
     if (stat.isDirectory()) {
       testFiles(filename); //recurse
     } else if (filename.indexOf(filter) >= 0) {

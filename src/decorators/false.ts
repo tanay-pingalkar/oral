@@ -12,10 +12,16 @@ export function False(): Function {
       const found = original.apply(this, args);
       if (found) {
         fail(key, "False");
+        global.tests[target["index"]].failed =
+          global.tests[target["index"]].failed + 1;
         console.log(
           chalk.green(`given :- false \n`) + chalk.red(`found :- ${found}`)
         );
-      } else pass(key, "False");
+      } else {
+        pass(key, "False");
+        global.tests[target["index"]].passed =
+          global.tests[target["index"]].passed + 1;
+      }
       return found;
     };
     return descriptor;

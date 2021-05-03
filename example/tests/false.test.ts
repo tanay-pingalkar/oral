@@ -1,7 +1,7 @@
 import { False, Suit } from "oral";
 import { True } from "oral";
 
-@Suit("this is equal test")
+@Suit("this is True test")
 export class Test {
   @True()
   @False()

@@ -15,6 +15,7 @@ export const finalConfig = (args: any): void => {
       process.exit();
     }
   }
+
   for (let key in args) {
     if (global.Config[key.slice(2)] !== undefined) {
       global.Config[key.slice(2)] = args[key];

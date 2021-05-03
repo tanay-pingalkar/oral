@@ -1,7 +1,7 @@
 import chalk from "chalk";
 import { fail, pass } from "../utils/prints";
 
-export function Match(regex: RegExp): Function {
+export function GreaterThan(given: number): Function {
   return function (
     target: Object,
     key: string,
@@ -10,18 +10,18 @@ export function Match(regex: RegExp): Function {
     const original = descriptor.value;
     descriptor.value = function (...args: any[]) {
       const found = original.apply(this, args);
-      if (!found.match(regex)) {
-        fail(key, "Match");
+      if (found > given) {
+        pass(key, "GreaterThan");
+        global.tests[target["index"]].passed =
+          global.tests[target["index"]].passed + 1;
+      } else {
+        fail(key, "GreaterThan");
         global.tests[target["index"]].failed =
           global.tests[target["index"]].failed + 1;
         console.log(
-          chalk.green(`given pattern :- ${regex}\n`) +
-            chalk.red(`doesnt match :- ${found}`)
+          chalk.green(`found number :- ${found}\n`) +
+            chalk.red(`is not greater than :- ${given}`)
         );
-      } else {
-        global.tests[target["index"]].passed =
-          global.tests[target["index"]].passed + 1;
-        pass(key, "Match");
       }
       return found;
     };

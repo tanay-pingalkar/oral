@@ -20,7 +20,6 @@ writing tests in oral is same as writing tests in other framework but in oral, t
 module.export={
   testDir:"/tests"
 }
-```
 
 ``` cd tests && touch firstTest.test.ts ```
 

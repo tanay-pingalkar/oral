@@ -16,13 +16,21 @@ export function Equal<type>(given: any | type): Function {
           JSON.stringify(found) === JSON.stringify(given)
         ) {
           pass(key, "Equal");
+          global.tests[target["index"]].passed =
+            global.tests[target["index"]].passed + 1;
         } else {
           fail(key, "Equal");
+          global.tests[target["index"]].failed =
+            global.tests[target["index"]].failed + 1;
           console.log(
             chalk.green(`given :- ${given} \n`) + chalk.red(`found :- ${found}`)
           );
         }
-      } else pass(key, "Equal");
+      } else {
+        pass(key, "Equal");
+        global.tests[target["index"]].passed =
+          global.tests[target["index"]].passed + 1;
+      }
       return found;
     };
     return descriptor;

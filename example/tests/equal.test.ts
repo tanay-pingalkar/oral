@@ -4,7 +4,7 @@ function add(a: number, b: number) {
   return a + b;
 }
 
-@Suit("gooooo")
+@Suit("this is Equal decorator test")
 export class Test {
   @Equal(3)
   addTest() {

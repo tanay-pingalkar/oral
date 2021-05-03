@@ -1,6 +1,6 @@
 import { Match, Suit } from "oral";
 
-@Suit("this is equal test")
+@Suit("this is Match decorator test test")
 export class Test {
   @Match(/this is [\w\W].* oral/g)
   regexTest() {

@@ -12,10 +12,16 @@ export function True(): Function {
       const found = original.apply(this, args);
       if (!found) {
         fail(key, "True");
+        global.tests[target["index"]].failed =
+          global.tests[target["index"]].failed + 1;
         console.log(
           chalk.green(`given :- true \n`) + chalk.red(`found :- ${found}`)
         );
-      } else pass(key, "True");
+      } else {
+        global.tests[target["index"]].passed =
+          global.tests[target["index"]].passed + 1;
+        pass(key, "True");
+      }
       return found;
     };
     return descriptor;

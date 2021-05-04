@@ -3,6 +3,7 @@ import "reflect-metadata";
 import "ts-node/register";
 import { centerString } from "./centerString";
 import { testsInfo } from "./testInfo";
+import { performance } from "perf_hooks";
 
 const lol = new Set<string | symbol>([
   "__defineGetter__",
@@ -32,6 +33,7 @@ function getAllMethodNames(obj: Object | null): Array<string | symbol> {
 
 export const testRunner = () => {
   const testFiles = global.Config.testFiles;
+  const t0 = performance.now();
   testFiles.forEach((fileName) => {
     const imported = require(fileName);
     for (let key in imported) {
@@ -43,6 +45,7 @@ export const testRunner = () => {
     }
     delete require.cache[require.resolve(fileName)];
   });
+  const t1 = performance.now();
   console.log(
     chalk.bgCyan.black.bold(
       centerString("🎉 all tests are done 🎉".split(""), 50)
@@ -55,6 +58,11 @@ export const testRunner = () => {
     `\n✅ ${chalk.blue.bold("passed tests")}:${chalk.blue.bold(passed)}`
   );
   console.log(
-    `\n❎ ${chalk.redBright.italic("failed tests:")}${chalk.red.bold(failed)}\n`
+    `\n❎ ${chalk.redBright.italic("failed tests:")}${chalk.red.bold(failed)}`
+  );
+  console.log(
+    `\n🕑 ${chalk.blue.bold("time taken:")}${chalk.blue.bold(
+      Math.round(t1 - t0) + "ms"
+    )}\n`
   );
 };

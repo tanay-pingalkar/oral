@@ -15,6 +15,7 @@ import { testRunner } from "./utils/testRunner";
 import chokidar from "chokidar";
 import chalk from "chalk";
 import { centerString } from "./utils/centerString";
+import { basicArg } from "./utils/basicArgs";
 
 // this is default configuration
 global.Config = {
@@ -30,6 +31,8 @@ global.tests = [];
 
 export const oral = (args: Array<string>) => {
   args = argParser(args);
+
+  if (basicArg(args)) return;
   // confirms config based on arguments in cli and configuration file
   finalConfig(args);
   // find .test.ts files and push it location to global.Config.testFiles
@@ -44,7 +47,25 @@ export const oral = (args: Array<string>) => {
       ignored: /node_modules/g,
       ignoreInitial: true,
     });
-    watcher.on("all", async (path) => {
+    watcher.on("change", async (path) => {
+      console.clear();
+      global.tests = [];
+      testRunner();
+      console.log(
+        chalk.bgGrey(centerString("watching for changes".split(""), 50))
+      );
+    });
+    watcher.on("add", () => {
+      console.clear();
+      global.Config.testFiles = [];
+      global.tests = [];
+      testFiles();
+      testRunner();
+      console.log(
+        chalk.bgGrey(centerString("watching for changes".split(""), 50))
+      );
+    });
+    watcher.on("unlink", () => {
       console.clear();
       global.Config.testFiles = [];
       global.tests = [];

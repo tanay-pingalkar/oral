@@ -7,7 +7,7 @@ export class Test {
     return [1, 2, 3, 4];
   }
 
-  @Contain([2, 7])
+  @Contain([2, 2])
   containFailTest() {
     return [1, 2, 3, 4];
   }

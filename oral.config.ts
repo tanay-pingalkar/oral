@@ -1,3 +1,3 @@
 module.exports = {
-  testDir: "/examples/tests",
+  testDir: "/example/tests",
 };

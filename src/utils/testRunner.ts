@@ -55,8 +55,8 @@ export const testRunner = () => {
     )
   );
   const { suits, tests, passed, failed } = testsInfo();
-  console.log(`\n💼 ${chalk.bold.cyan(`all suits:${suits}`)}`);
-  console.log(`\n📝 ${chalk.bold(`all tests:${tests}`)}`);
+  console.log(`\n💼 ${chalk.bold.cyan(`total suites:${suits}`)}`);
+  console.log(`\n📝 ${chalk.bold(`total tests:${tests}`)}`);
   console.log(
     `\n✅ ${chalk.blue.bold("passed tests")}:${chalk.blue.bold(passed)}`
   );

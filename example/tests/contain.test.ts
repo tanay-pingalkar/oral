@@ -1,7 +1,7 @@
-import { Contain, Suit } from "oral";
+import { Contain, Suite } from "oral";
 
-@Suit("this is  Contain decorator test")
-export class Test {
+@Suite("this is  Contain decorator test")
+export class atest {
   @Contain([1, 2, 3, 4])
   containTest() {
     return [1, 2, 3, 4];

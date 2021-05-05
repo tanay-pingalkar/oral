@@ -1,7 +1,7 @@
-import { False, Suit } from "oral";
+import { False, Suite } from "oral";
 import { True } from "oral";
 
-@Suit("this is True test")
+@Suite("this is True test")
 export class Test {
   @True()
   @False()

@@ -8,16 +8,13 @@ export function GreaterThan(given: number): Function {
     descriptor: PropertyDescriptor
   ): PropertyDescriptor {
     const original = descriptor.value;
+    if (!global.utility.has(key)) global.toRun.add(key);
     descriptor.value = function (...args: any[]) {
       const found = original.apply(this, args);
       if (found > given) {
-        pass(key, "GreaterThan");
-        global.tests[target["index"]].passed =
-          global.tests[target["index"]].passed + 1;
+        pass(key, "GreaterThan", target);
       } else {
-        fail(key, "GreaterThan");
-        global.tests[target["index"]].failed =
-          global.tests[target["index"]].failed + 1;
+        fail(key, "GreaterThan", target);
         console.log(
           chalk.green(`found number :- ${found}\n`) +
             chalk.red(`is not greater than :- ${given}`)

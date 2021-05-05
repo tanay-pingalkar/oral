@@ -1,6 +1,6 @@
-import { Suit, LessThan } from "oral";
+import { Suite, LessThan } from "oral";
 
-@Suit()
+@Suite()
 export class LessThanTest {
   @LessThan(5)
   shouldGreaterThan5() {

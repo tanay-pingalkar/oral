@@ -10,6 +10,7 @@ export function Contain<type>(
     descriptor: PropertyDescriptor
   ): PropertyDescriptor {
     const original = descriptor.value;
+    if (!global.utility.has(key)) global.toRun.add(key);
     descriptor.value = function (...args: any[]) {
       const found = original.apply(this, args);
       if (typeof given === "object" && JSON.stringify(found).startsWith("[")) {
@@ -23,9 +24,7 @@ export function Contain<type>(
             newArray.push(found.find((val) => val === element));
           });
         } else {
-          fail(key, "Contain:Array");
-          global.tests[target["index"]].failed =
-            global.tests[target["index"]].failed + 1;
+          fail(key, "Contain:Array", target);
           console.log(
             chalk.red(`expected array but found ${typeof found} \n `),
             chalk.green(`given :- ${given}\n`),
@@ -33,13 +32,9 @@ export function Contain<type>(
           );
         }
         if (JSON.stringify(given) === JSON.stringify(newArray)) {
-          pass(key, "Contain:Array");
-          global.tests[target["index"]].passed =
-            global.tests[target["index"]].passed + 1;
+          pass(key, "Contain:Array", target);
         } else {
-          fail(key, "Contain:Array");
-          global.tests[target["index"]].failed =
-            global.tests[target["index"]].failed + 1;
+          fail(key, "Contain:Array", target);
           console.log(
             chalk.green(`given :- ${given} \n`),
             chalk.red(`found :- ${found}`)
@@ -62,22 +57,16 @@ export function Contain<type>(
             }
           }
           if (Object.keys(newGiven).length === i) {
-            pass(key, "Contain:Object");
-            global.tests[target["index"]].passed =
-              global.tests[target["index"]].passed + 1;
+            pass(key, "Contain:Object", target);
           } else {
-            fail(key, "Contain:Object");
-            global.tests[target["index"]].failed =
-              global.tests[target["index"]].failed + 1;
+            fail(key, "Contain:Object", target);
             console.log(
               chalk.green(`given :-\n${JSON.stringify(given, null, " ")} \n`),
               chalk.red(`found :-\n${JSON.stringify(found, null, " ")}`)
             );
           }
         } else {
-          fail(key, "Contain:Object");
-          global.tests[target["index"]].failed =
-            global.tests[target["index"]].failed + 1;
+          fail(key, "Contain:Object", target);
           console.log(
             chalk.red(`expected object but found ${typeof found} \n `),
             chalk.green(`given :-\n${JSON.stringify(given, null, " ")} `),

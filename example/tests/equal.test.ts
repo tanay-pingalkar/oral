@@ -1,10 +1,10 @@
-import { Equal, Suit } from "oral";
+import { Equal, Suite } from "oral";
 
 function add(a: number, b: number) {
   return a + b;
 }
 
-@Suit("this is Equal decorator test")
+@Suite("this is Equal decorator test")
 export class Test {
   @Equal(3)
   addTest() {

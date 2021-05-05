@@ -1,7 +1,7 @@
 import chalk from "chalk";
 import { centerString } from "../utils/centerString";
 
-export function Suit(description?: string) {
+export function Suite(description?: string) {
   function whatDescription(constructor: string): string {
     let res: string;
     if (description) {
@@ -17,8 +17,12 @@ export function Suit(description?: string) {
       failed: 0,
     });
     constructor.prototype.index = num - 1;
-    console.log(
-      `\n${chalk.bold.bgMagentaBright.black(whatDescription(constructor.name))}`
-    );
+    constructor.prototype.log = function () {
+      console.log(
+        `\n${chalk.bold.bgMagentaBright.black(
+          whatDescription(constructor.name)
+        )}`
+      );
+    };
   };
 }

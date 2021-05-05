@@ -4,6 +4,8 @@ declare global {
     interface Global {
       Config: config;
       tests: Array<suit>;
+      toRun: Set<string>;
+      utility: Set<string>;
     }
   }
 }
@@ -21,6 +23,7 @@ declare interface config {
   coverageDir: string;
   testDir: string;
   watchDir: string;
+  clear: Boolean;
 }
 
 export declare interface testInfo {

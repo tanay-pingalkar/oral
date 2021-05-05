@@ -8,19 +8,16 @@ export function False(): Function {
     descriptor: PropertyDescriptor
   ): PropertyDescriptor {
     const original = descriptor.value;
+    if (!global.utility.has(key)) global.toRun.add(key);
     descriptor.value = function (...args: any[]) {
       const found = original.apply(this, args);
       if (found) {
-        fail(key, "False");
-        global.tests[target["index"]].failed =
-          global.tests[target["index"]].failed + 1;
+        fail(key, "False", target);
         console.log(
           chalk.green(`given :- false \n`) + chalk.red(`found :- ${found}`)
         );
       } else {
-        pass(key, "False");
-        global.tests[target["index"]].passed =
-          global.tests[target["index"]].passed + 1;
+        pass(key, "False", target);
       }
       return found;
     };

@@ -38,13 +38,18 @@ export const testRunner = () => {
   testFiles.forEach((fileName) => {
     global.toRun = new Set([]);
     global.utility = new Set([]);
+    global.before = null;
+    global.after = null;
+
     const imported = require(fileName);
     for (let key in imported) {
       const test = new imported[key]();
       test["log"]();
+      if (global.before) test[global.before]();
       global.toRun.forEach((value) => {
         if (test[value]) test[value]();
       });
+      if (global.after) test[global.after]();
     }
     delete require.cache[require.resolve(fileName)];
   });

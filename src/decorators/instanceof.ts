@@ -2,7 +2,9 @@ import chalk from "chalk";
 import { Add } from "../utils/add";
 import { fail, pass } from "../utils/prints";
 
-export function GreaterThan(given: number): Function {
+export function Instanceof<t extends new (...args: any) => any>(
+  given: InstanceType<t> | any
+): Function {
   return function (
     target: Object,
     key: string,
@@ -12,13 +14,13 @@ export function GreaterThan(given: number): Function {
     Add(key);
     descriptor.value = function (...args: any[]) {
       const found = original.apply(this, args);
-      if (found > given) {
-        pass(key, "GreaterThan", target);
+      if (found instanceof given) {
+        pass(key, "Type", target);
       } else {
-        fail(key, "GreaterThan", target);
+        fail(key, "Type", target);
         console.log(
-          chalk.green(`found number :- ${found}\n`) +
-            chalk.red(`is not greater than :- ${given}`)
+          chalk.green(`given instance :- ${given} \n`) +
+            chalk.redBright(`found instace :- ${found}`)
         );
       }
       return found;

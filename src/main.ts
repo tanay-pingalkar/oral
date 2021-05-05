@@ -8,6 +8,10 @@ export { Suite } from "./decorators/suit";
 export { GreaterThan } from "./decorators/greaterThan";
 export { LessThan } from "./decorators/lessThan";
 export { Util } from "./decorators/util";
+export { Before } from "./decorators/before";
+export { After } from "./decorators/after";
+export { Typeof } from "./decorators/typeof";
+export { Instanceof } from "./decorators/instanceof";
 
 import { argParser } from "./utils/argparser";
 import { finalConfig } from "./utils/finalConfig";

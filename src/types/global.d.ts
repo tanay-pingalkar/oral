@@ -6,6 +6,8 @@ declare global {
       tests: Array<suit>;
       toRun: Set<string>;
       utility: Set<string>;
+      before: string;
+      after: string;
     }
   }
 }

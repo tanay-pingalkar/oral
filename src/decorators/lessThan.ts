@@ -1,6 +1,7 @@
 import chalk from "chalk";
 import { fail, pass } from "../utils/prints";
 import "reflect-metadata";
+import { Add } from "../utils/add";
 
 export function LessThan(given: number): Function {
   return function (
@@ -9,7 +10,7 @@ export function LessThan(given: number): Function {
     descriptor: PropertyDescriptor
   ): PropertyDescriptor {
     const original = descriptor.value;
-    if (!global.utility.has(key)) global.toRun.add(key);
+    Add(key);
     descriptor.value = function (...args: any[]) {
       const found = original.apply(this, args);
       if (found < given) {

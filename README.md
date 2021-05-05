@@ -34,7 +34,7 @@ inside firstTest.test.ts
 ```typescript
 import { Suit, Equal } from "oral";
 
-@Suit()
+@Suite()
 export class myFirstTest {
   @Equal("this should pass")
   thisShouldPass() {
@@ -57,7 +57,9 @@ and here you go..
 
 ## cli options
 
-oral `location of config file` `--watch` `--testDir ./tests`
+oral `location of config file` `--watch` `--testDir ./tests --clear`
+
+all cli options can be inclue in `oral.config.ts`
 
 ## more decorators
 

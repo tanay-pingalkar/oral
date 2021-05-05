@@ -8,6 +8,7 @@ export function Equal<type>(given: any | type): Function {
     descriptor: PropertyDescriptor
   ): PropertyDescriptor {
     const original = descriptor.value;
+    if (!global.utility.has(key)) global.toRun.add(key);
     descriptor.value = function (...args: any[]) {
       const found = original.apply(this, args);
       if (found !== given) {
@@ -15,21 +16,17 @@ export function Equal<type>(given: any | type): Function {
           typeof found === "object" &&
           JSON.stringify(found) === JSON.stringify(given)
         ) {
-          pass(key, "Equal");
+          pass(key, "Equal", target);
           global.tests[target["index"]].passed =
             global.tests[target["index"]].passed + 1;
         } else {
-          fail(key, "Equal");
-          global.tests[target["index"]].failed =
-            global.tests[target["index"]].failed + 1;
+          fail(key, "Equal", target);
           console.log(
             chalk.green(`given :- ${given} \n`) + chalk.red(`found :- ${found}`)
           );
         }
       } else {
-        pass(key, "Equal");
-        global.tests[target["index"]].passed =
-          global.tests[target["index"]].passed + 1;
+        pass(key, "Equal", target);
       }
       return found;
     };

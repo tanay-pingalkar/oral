@@ -176,7 +176,7 @@ export class extendDecoratorTest {
 ```
 
 ## philosophy
-Hello 🙂 i am tanay pingalkar a 14 year old ( dont mistrust me becoz of my age! ) nerd who like to make things that helps other and are open and free. I have created this testing framework for using the power of decorators and to give testers a complete new exiting workflow. This framework is typescript specific and dedicated to it. I currently dont have a good name but I call it "oral" (@ral) for some reason. Suggestion for name is appreciated. This project is open source and License under Mit. I will like to see feedback on my product.
+Hello 🙂 i am tanay pingalkar a 14 year old nerd ( dont mistrust me becoz of my age! ) who like to make things that helps other and are open and free. I have created this testing framework for using the power of decorators and to give testers a complete new testing workflow. This framework is typescript specific and dedicated to it. I currently dont have a good name but I call it "oral" (@ral) for some reason. Suggestion for name is needed. This project is open source and Licensed under Mit. I will like to see feedback on my product.
 
 ## contribution
 this porject is open source and will always live open source. Contributer's are highly welcome and appreciated. You can contribute to us by following means.

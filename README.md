@@ -186,9 +186,9 @@ this porject is open source and will always live open source. Contributer's are 
 - contribute to direct source code
 
 ## local env
-`fork the repo and clone it`
-`npm install`
-`cd examples && npm install`
-`cd .. && npm build`
-`oral`
+`fork the repo and clone it` <br>
+`npm install` <br>
+`cd examples && npm install` <br>
+`cd .. && npm build` <br>
+`oral` <br>
 

@@ -8,6 +8,11 @@ export { Suite } from "./decorators/suit";
 export { GreaterThan } from "./decorators/greaterThan";
 export { LessThan } from "./decorators/lessThan";
 export { Util } from "./decorators/util";
+export { Before } from "./decorators/before";
+export { After } from "./decorators/after";
+export { Typeof } from "./decorators/typeof";
+export { Instanceof } from "./decorators/instanceof";
+export { Extend } from "./decorators/extend";
 
 import { argParser } from "./utils/argparser";
 import { finalConfig } from "./utils/finalConfig";
@@ -27,6 +32,9 @@ global.Config = {
   testDir: "/",
   watchDir: "/",
   clear: false,
+  noclear: false,
+  beforeEveryone: null,
+  afterEveryone: null,
 };
 
 global.tests = [];
@@ -45,7 +53,7 @@ export const oral = (args: Array<string>) => {
 
   if (global.Config.watch) {
     /* watch mode logic*/
-    process.stdout.write("\x1Bc");
+    if (!global.Config.noclear) process.stdout.write("\x1Bc");
     testRunner();
     console.log(chalk.bgGrey(centerString("watchmode on".split(""), 50)));
     const watcher = chokidar.watch(process.cwd() + global.Config.watchDir, {

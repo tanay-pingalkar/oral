@@ -1,8 +1,9 @@
 import chalk from "chalk";
+import { TypeOfTag } from "typescript";
 import { Add } from "../utils/add";
 import { fail, pass } from "../utils/prints";
 
-export function GreaterThan(given: number): Function {
+export function Typeof(given: TypeOfTag): Function {
   return function (
     target: Object,
     key: string,
@@ -12,13 +13,13 @@ export function GreaterThan(given: number): Function {
     Add(key);
     descriptor.value = function (...args: any[]) {
       const found = original.apply(this, args);
-      if (found > given) {
-        pass(key, "GreaterThan", target);
+      if (typeof found === given) {
+        pass(key, "Type", target);
       } else {
-        fail(key, "GreaterThan", target);
+        fail(key, "Type", target);
         console.log(
-          chalk.green(`found number :- ${found}\n`) +
-            chalk.red(`is not greater than :- ${given}`)
+          chalk.green(`given type :- ${given} \n`) +
+            chalk.redBright(`found type :- ${typeof found}`)
         );
       }
       return found;

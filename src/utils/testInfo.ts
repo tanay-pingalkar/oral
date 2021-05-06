@@ -1,4 +1,4 @@
-import { testInfo as testInfoType } from "../types/global";
+import { testInfo as testInfoType } from "../global";
 export function testsInfo(): testInfoType {
   let suits = global.tests.length;
   let tests = 0;

@@ -34,7 +34,7 @@ inside firstTest.test.ts
 ```typescript
 import { Suit, Equal } from "oral";
 
-@Suit()
+@Suite()
 export class myFirstTest {
   @Equal("this should pass")
   thisShouldPass() {
@@ -51,13 +51,13 @@ export class myFirstTest {
 save and run
 `oral --watch`
 
-![output](https://github.com/tanay-pingalkar/oral/blob/main/Screenshot%20from%202021-05-03%2017-25-42.png)
+![output](https://github.com/tanay-pingalkar/oral/blob/main/output.png)
 
 and here you go..
 
 ## cli options
-
-oral `location of config file` `--watch` `--testDir /tests/` `--clear` `--noclear` `--help` `--version`
+oral `location of config file` `--watch` `--testDir /tests/` `--clear` `--noclear` `--help` `--version` <br>
+all cli options can be inclue in `oral.config.ts`
 
 ## Api
 `@Equal()` <br>
@@ -177,6 +177,7 @@ export class extendDecoratorTest {
 
 ## philosophy
 Hello 🙂 i am tanay pingalkar a 14 year old nerd ( dont mistrust me becoz of my age! ) who like to make things that helps other and are open and free. I have created this testing framework for using the power of decorators and to give testers a complete new exciting workflow. This framework is typescript specific and dedicated to it. I currently dont have a good name but I call it "oral" (@ral) for some reason. Suggestion for name is needed. This project is open source and Licensed under Mit. I will like to see feedback on my product.
+oral `location of config file` `--watch` `--testDir ./tests --clear`
 
 ## contribution
 this porject is open source and will always live open source. Contributer's are highly welcome and appreciated. You can contribute to us by following means.

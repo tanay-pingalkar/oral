@@ -1,4 +1,5 @@
 import chalk from "chalk";
+import { Add } from "../utils/add";
 import { fail, pass } from "../utils/prints";
 
 export function False(): Function {
@@ -8,7 +9,7 @@ export function False(): Function {
     descriptor: PropertyDescriptor
   ): PropertyDescriptor {
     const original = descriptor.value;
-    if (!global.utility.has(key)) global.toRun.add(key);
+    Add(key);
     descriptor.value = function (...args: any[]) {
       const found = original.apply(this, args);
       if (found) {

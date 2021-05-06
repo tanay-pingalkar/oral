@@ -51,7 +51,7 @@ export class myFirstTest {
 save and run
 `oral --watch`
 
-![output](https://github.com/tanay-pingalkar/oral/blob/main/Screenshot%20from%202021-05-03%2017-25-42.png)
+![output](https://github.com/tanay-pingalkar/oral/blob/main/output.png)
 
 and here you go..
 

@@ -26,6 +26,9 @@ declare interface config {
   testDir: string;
   watchDir: string;
   clear: Boolean;
+  noclear: Boolean;
+  beforeEveryone: Function;
+  afterEveryone: Function;
 }
 
 export declare interface testInfo {

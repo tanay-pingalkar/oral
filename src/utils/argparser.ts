@@ -12,6 +12,7 @@ export const argParser = (args: Array<string>): any => {
       "--coverage": Boolean,
       "--watchDir": String,
       "--clear": Boolean,
+      "--noclear": Boolean,
       "-C": "--clear",
       "-W": "--watch",
       "-V": "--version",

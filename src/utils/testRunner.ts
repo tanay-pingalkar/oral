@@ -4,6 +4,7 @@ import "ts-node/register";
 import { centerString } from "./centerString";
 import { testsInfo } from "./testInfo";
 import { performance } from "perf_hooks";
+const notifier = require("node-notifier");
 
 // const lol = new Set<string | symbol>([
 //   "__defineGetter__",
@@ -35,6 +36,11 @@ import { performance } from "perf_hooks";
 export const testRunner = () => {
   const testFiles = global.Config.testFiles;
   const t0 = performance.now();
+  let globalObject: any;
+  if (global.Config.beforeEveryone) {
+    globalObject = global.Config.beforeEveryone();
+  }
+
   testFiles.forEach((fileName) => {
     global.toRun = new Set([]);
     global.utility = new Set([]);
@@ -43,7 +49,9 @@ export const testRunner = () => {
 
     const imported = require(fileName);
     for (let key in imported) {
-      const test = new imported[key]();
+      let test: any;
+      if (imported[key].length >= 1) test = new imported[key](globalObject);
+      else test = new imported[key]();
       test["log"]();
       if (global.before) test[global.before]();
       global.toRun.forEach((value) => {
@@ -53,6 +61,7 @@ export const testRunner = () => {
     }
     delete require.cache[require.resolve(fileName)];
   });
+  if (global.Config.afterEveryone) global.Config.afterEveryone();
   const t1 = performance.now();
   console.log(
     chalk.bgCyan.black.bold(
@@ -73,4 +82,11 @@ export const testRunner = () => {
       Math.round(t1 - t0) + "ms"
     )}\n`
   );
+  notifier.notify({
+    title: "🎉 all tests are done 🎉",
+    message: `\n💼 total suites:${suits} \n📝  total tests:${tests} \n ✅ passed tests:${passed} \❎  failed tests:${failed}\n 🕑 time taken:${Math.round(
+      t1 - t0
+    )}ms`,
+    sound: true,
+  });
 };

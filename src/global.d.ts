@@ -29,6 +29,7 @@ declare interface config {
   noclear: Boolean;
   beforeEveryone: Function;
   afterEveryone: Function;
+  nonotify: Boolean;
 }
 
 export declare interface testInfo {

@@ -3,6 +3,6 @@ function beforeEveryone() {
 }
 
 module.exports = {
-  testDir: "/example/tests",
+  testDir: "/example/",
   beforeEveryone: beforeEveryone,
 };

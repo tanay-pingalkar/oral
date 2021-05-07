@@ -19,7 +19,9 @@
     "oral": "bin/oral"
   },
   "devDependencies": {
+    "@types/istanbul": "^0.4.30",
     "@types/node": "^15.0.1",
+    "@types/node-notifier": "^8.0.0",
     "nodemon": "^2.0.7",
     "prettier": "^2.2.1",
     "typescript": "^4.2.4"
@@ -30,6 +32,7 @@
     "chokidar": "^3.5.1",
     "esm": "^3.2.25",
     "node-notifier": "^9.0.1",
+    "oral": "file:.",
     "reflect-metadata": "^0.1.13",
     "ts-node": "^9.1.1"
   }

@@ -13,6 +13,7 @@ export const argParser = (args: Array<string>): any => {
       "--watchDir": String,
       "--clear": Boolean,
       "--noclear": Boolean,
+      "--nonotify": Boolean,
       "-C": "--clear",
       "-W": "--watch",
       "-V": "--version",

@@ -35,6 +35,7 @@ global.Config = {
   noclear: false,
   beforeEveryone: null,
   afterEveryone: null,
+  nonotify: false,
 };
 
 global.tests = [];

@@ -8,6 +8,8 @@ declare global {
       utility: Set<string>;
       before: string;
       after: string;
+      beforeEach: string;
+      afterEach: string;
     }
   }
 }
@@ -30,6 +32,7 @@ declare interface config {
   beforeEveryone: Function;
   afterEveryone: Function;
   nonotify: Boolean;
+  tsconfig: string;
 }
 
 export declare interface testInfo {

@@ -3,6 +3,7 @@ import arg from "arg";
 export const argParser = (args: Array<string>): any => {
   const parser = arg(
     {
+      "--tsconfig": String,
       "--help": Boolean,
       "--version": Boolean,
       "--testDir": String,

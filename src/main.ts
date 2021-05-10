@@ -13,6 +13,8 @@ export { After } from "./decorators/after";
 export { Typeof } from "./decorators/typeof";
 export { Instanceof } from "./decorators/instanceof";
 export { Extend } from "./decorators/extend";
+export { BeforeEach } from "./decorators/beforeEach";
+export { AfterEach } from "./decorators/afterEach";
 
 import { argParser } from "./utils/argparser";
 import { finalConfig } from "./utils/finalConfig";
@@ -36,6 +38,7 @@ global.Config = {
   beforeEveryone: null,
   afterEveryone: null,
   nonotify: false,
+  tsconfig: "/tsconfig.json",
 };
 
 global.tests = [];

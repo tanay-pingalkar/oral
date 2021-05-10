@@ -1,6 +1,6 @@
 import chalk from "chalk";
 import "reflect-metadata";
-import "ts-node/register";
+import { create } from "ts-node";
 import { centerString } from "./centerString";
 import { testsInfo } from "./testInfo";
 import { performance } from "perf_hooks";
@@ -34,6 +34,8 @@ const notifier = require("node-notifier");
 // }
 
 export const testRunner = () => {
+  const config = require(process.cwd() + global.Config.tsconfig);
+  create(config);
   const testFiles = global.Config.testFiles;
 
   const t0 = performance.now();
@@ -47,6 +49,8 @@ export const testRunner = () => {
     global.utility = new Set([]);
     global.before = null;
     global.after = null;
+    global.beforeEach = null;
+    global.afterEach = null;
 
     const imported = require(fileName);
 
@@ -57,7 +61,9 @@ export const testRunner = () => {
       test["log"]();
       if (global.before) test[global.before]();
       global.toRun.forEach((value) => {
+        if (global.beforeEach) test[global.beforeEach]();
         if (test[value]) test[value]();
+        if (global.afterEach) test[global.afterEach]();
       });
       if (global.after) test[global.after]();
     }

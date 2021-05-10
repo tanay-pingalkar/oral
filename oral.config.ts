@@ -5,4 +5,5 @@ function beforeEveryone() {
 module.exports = {
   testDir: "/example/",
   beforeEveryone: beforeEveryone,
+  tsconfig: "/example/tsconfig.json",
 };

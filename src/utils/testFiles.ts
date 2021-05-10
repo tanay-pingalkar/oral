@@ -5,7 +5,7 @@ export const testFiles = (
 ) => {
   const filter = ".test.ts";
   if (!fs.existsSync(startPath)) {
-    console.log("no dir ", startPath);
+    throw new Error(`no dir :- ${startPath}`);
     return;
   }
   const files = fs.readdirSync(startPath);

@@ -2,6 +2,9 @@
 
 an open source decorator based testing framework for typescript
 
+##  important note 🚨 
+currenly it uses global variables that leads to bugs, I am working on a event based architecture, the api will probably remain same but the test runner will have some breaking changes. I will try to complete event based (global variable free) test  runner soon so dont worry. The new upcoming architecture will open possibilities of parallel processing and async tests.
+
 ## features
 
 - decorator based testing

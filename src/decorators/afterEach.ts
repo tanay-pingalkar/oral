@@ -3,10 +3,7 @@ export function AfterEach(): Function {
     target: Object,
     key: string,
     descriptor: PropertyDescriptor
-  ): PropertyDescriptor {
-    global.afterEach = key;
-    global.utility.delete(key);
-    global.toRun.delete(key);
-    return descriptor;
+  ): void {
+    Reflect.defineMetadata("role", "afterEach", target, key);
   };
 }

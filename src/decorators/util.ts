@@ -1,11 +1,11 @@
+import "reflect-metadata";
+
 export function Util(): Function {
-  return function (
-    target: Object,
+  return function <T>(
+    target: object,
     key: string,
-    descriptor: PropertyDescriptor
-  ): PropertyDescriptor {
-    global.toRun.delete(key);
-    global.utility.add(key);
-    return descriptor;
+    descriptor: TypedPropertyDescriptor<T>
+  ) {
+    Reflect.defineMetadata("role", "util", target, key);
   };
 }

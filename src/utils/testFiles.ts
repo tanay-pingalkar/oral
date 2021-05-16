@@ -1,9 +1,8 @@
 import fs from "fs";
 import path from "path";
-export const testFiles = (
-  startPath = process.cwd() + global.Config.testDir
-) => {
+export const testFiles = (startPath): Set<string> => {
   const filter = ".test.ts";
+  const testFilesSet: Set<string> = new Set([]);
   if (!fs.existsSync(startPath)) {
     throw new Error(`no dir :- ${startPath}`);
     return;
@@ -15,7 +14,8 @@ export const testFiles = (
     if (stat.isDirectory()) {
       testFiles(filename); //recurse
     } else if (filename.indexOf(filter) >= 0) {
-      global.Config.testFiles.push(filename);
+      testFilesSet.add(filename);
     }
   }
+  return testFilesSet;
 };

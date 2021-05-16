@@ -1,6 +1,4 @@
 import chalk from "chalk";
-import { Add } from "../utils/add";
-import { fail, pass } from "../utils/prints";
 
 export function Instanceof<t extends new (...args: any) => any>(
   given: InstanceType<t> | any
@@ -11,13 +9,13 @@ export function Instanceof<t extends new (...args: any) => any>(
     descriptor: PropertyDescriptor
   ): PropertyDescriptor {
     const original = descriptor.value;
-    Add(key);
+    Reflect.defineMetadata("role", "assertion", target, key);
     descriptor.value = function (...args: any[]) {
       const found = original.apply(this, args);
       if (found instanceof given) {
-        pass(key, "Type", target);
+        this.emit("pass", key, "InstanceOf");
       } else {
-        fail(key, "Type", target);
+        this.emit("fail", key, "InstanceOf");
         console.log(
           chalk.green(`given instance :- ${given} \n`) +
             chalk.redBright(`found instace :- ${found}`)

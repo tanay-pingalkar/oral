@@ -21,7 +21,7 @@
   },
   "devDependencies": {
     "@types/istanbul": "^0.4.30",
-    "@types/node": "^15.0.1",
+    "@types/node": "^15.3.0",
     "@types/node-notifier": "^8.0.0",
     "nodemon": "^2.0.7",
     "prettier": "^2.2.1",
@@ -35,6 +35,7 @@
     "node-notifier": "^9.0.1",
     "oral": "file:.",
     "reflect-metadata": "^0.1.13",
+    "ts-mixer": "^5.4.1",
     "ts-node": "^9.1.1"
   }
 }

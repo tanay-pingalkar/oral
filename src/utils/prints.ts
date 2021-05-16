@@ -1,8 +1,6 @@
 import chalk from "chalk";
 
-export const pass = (key: string, name: string, target: Object) => {
-  global.tests[target["index"]].passed =
-    global.tests[target["index"]].passed + 1;
+export const pass = (key: string, name: string) => {
   console.log(
     chalk.bgGreen(chalk.black(chalk.bold(" pass "))) +
       " " +
@@ -12,9 +10,7 @@ export const pass = (key: string, name: string, target: Object) => {
   );
 };
 
-export const fail = (key: string, name: string, target: Object) => {
-  global.tests[target["index"]].failed =
-    global.tests[target["index"]].failed + 1;
+export const fail = (key: string, name: string) => {
   console.log(
     chalk.bgRed(chalk.black(chalk.bold(" fail "))) +
       " " +

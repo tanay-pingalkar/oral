@@ -1,7 +1,7 @@
 import { Extend, Suite } from "oral";
 
-const decoratorFunc = (val: string) => {
-  if (val === "a string") return true;
+const decoratorFunc = (found) => {
+  if (found === "a string") return true;
   return false;
 };
 

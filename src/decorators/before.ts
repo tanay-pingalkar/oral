@@ -1,12 +1,10 @@
-export function Before(): Function {
+export function BeforeAll(): Function {
   return function (
     target: Object,
     key: string,
     descriptor: PropertyDescriptor
   ): PropertyDescriptor {
-    global.before = key;
-    global.utility.delete(key);
-    global.toRun.delete(key);
+    Reflect.defineMetadata("role", "beforeAll", target, key);
     return descriptor;
   };
 }

@@ -1,12 +1,10 @@
-export function After(): Function {
+export function AfterAll(): Function {
   return function (
     target: Object,
     key: string,
     descriptor: PropertyDescriptor
   ): PropertyDescriptor {
-    global.after = key;
-    global.utility.delete(key);
-    global.toRun.delete(key);
+    Reflect.defineMetadata("role", "afterAll", target, key);
     return descriptor;
   };
 }

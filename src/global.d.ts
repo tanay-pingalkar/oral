@@ -1,15 +1,10 @@
+import arg from "arg";
+
 export {};
 declare global {
   namespace NodeJS {
     interface Global {
       Config: config;
-      tests: Array<suit>;
-      toRun: Set<string>;
-      utility: Set<string>;
-      before: string;
-      after: string;
-      beforeEach: string;
-      afterEach: string;
     }
   }
 }
@@ -20,18 +15,16 @@ export declare interface suit {
   failed: number;
 }
 
-declare interface config {
-  testFiles: Array<string>;
+export declare interface config {
   silent: boolean;
   watch: boolean;
-  coverageDir: string;
   testDir: string;
   watchDir: string;
   clear: Boolean;
   noclear: Boolean;
   beforeEveryone: Function;
   afterEveryone: Function;
-  nonotify: Boolean;
+  notify: Boolean;
   tsconfig: string;
 }
 
@@ -41,3 +34,18 @@ export declare interface testInfo {
   suits: number;
   tests: number;
 }
+
+export type argsReturn = arg.Result<{
+  "--tsconfig": StringConstructor;
+  "--help": BooleanConstructor;
+  "--version": BooleanConstructor;
+  "--testDir": StringConstructor;
+  "--coverageDir": StringConstructor;
+  "--watch": BooleanConstructor;
+  "--silent": BooleanConstructor;
+  "--coverage": BooleanConstructor;
+  "--watchDir": StringConstructor;
+  "--clear": BooleanConstructor;
+  "--noclear": BooleanConstructor;
+  "--nonotify": BooleanConstructor;
+}>;

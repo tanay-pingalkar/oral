@@ -1,6 +1,4 @@
 import chalk from "chalk";
-import { Add } from "../utils/add";
-import { fail, pass } from "../utils/prints";
 
 export function Equal<type>(given: any | type): Function {
   return function (
@@ -9,25 +7,23 @@ export function Equal<type>(given: any | type): Function {
     descriptor: PropertyDescriptor
   ): PropertyDescriptor {
     const original = descriptor.value;
-    Add(key);
+    Reflect.defineMetadata("role", "assertion", target, key);
     descriptor.value = function (...args: any[]) {
-      const found = original.apply(this, args);
+      let found = original.apply(this, args);
       if (found !== given) {
         if (
           typeof found === "object" &&
           JSON.stringify(found) === JSON.stringify(given)
         ) {
-          pass(key, "Equal", target);
-          global.tests[target["index"]].passed =
-            global.tests[target["index"]].passed + 1;
+          this.emit("pass", key, "Equal");
         } else {
-          fail(key, "Equal", target);
+          this.emit("fail", key, "Equal");
           console.log(
             chalk.green(`given :- ${given} \n`) + chalk.red(`found :- ${found}`)
           );
         }
       } else {
-        pass(key, "Equal", target);
+        this.emit("pass", key, "Equal");
       }
       return found;
     };

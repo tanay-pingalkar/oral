@@ -1,6 +1,4 @@
 import chalk from "chalk";
-import { Add } from "../utils/add";
-import { fail, pass } from "../utils/prints";
 
 export function True(): Function {
   return function (
@@ -9,16 +7,16 @@ export function True(): Function {
     descriptor: PropertyDescriptor
   ): PropertyDescriptor {
     const original = descriptor.value;
-    Add(key);
+    Reflect.defineMetadata("role", "assertion", target, key);
     descriptor.value = function (...args: any[]) {
       const found = original.apply(this, args);
       if (!found) {
-        fail(key, "True", target);
+        this.emit("fail", key, "True");
         console.log(
           chalk.green(`given :- true \n`) + chalk.red(`found :- ${found}`)
         );
       } else {
-        pass(key, "True", target);
+        this.emit("pass", key, "True");
       }
       return found;
     };

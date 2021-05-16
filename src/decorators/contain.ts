@@ -1,6 +1,4 @@
 import chalk from "chalk";
-import { Add } from "../utils/add";
-import { fail, pass } from "../utils/prints";
 
 export function Contain<type>(
   given: Array<any> | string | object | type
@@ -11,7 +9,7 @@ export function Contain<type>(
     descriptor: PropertyDescriptor
   ): PropertyDescriptor {
     const original = descriptor.value;
-    Add(key);
+    Reflect.defineMetadata("role", "assertion", target, key);
     descriptor.value = function (...args: any[]) {
       const found = original.apply(this, args);
       if (typeof given === "object" && JSON.stringify(found).startsWith("[")) {
@@ -25,7 +23,7 @@ export function Contain<type>(
             newArray.push(found.find((val) => val === element));
           });
         } else {
-          fail(key, "Contain:Array", target);
+          this.emit("fail", key, "Contain:Array");
           console.log(
             chalk.red(`expected array but found ${typeof found} \n `),
             chalk.green(`given :- ${given}\n`),
@@ -33,9 +31,9 @@ export function Contain<type>(
           );
         }
         if (JSON.stringify(given) === JSON.stringify(newArray)) {
-          pass(key, "Contain:Array", target);
+          this.emit("pass", key, "Contain:Array");
         } else {
-          fail(key, "Contain:Array", target);
+          this.emit("fail", key, "Contain:Array");
           console.log(
             chalk.green(`given :- ${given} \n`),
             chalk.red(`found :- ${found}`)
@@ -58,16 +56,16 @@ export function Contain<type>(
             }
           }
           if (Object.keys(newGiven).length === i) {
-            pass(key, "Contain:Object", target);
+            this.emit("pass", key, "Contain:Object");
           } else {
-            fail(key, "Contain:Object", target);
+            this.emit("fail", key, "Contain:Object");
             console.log(
               chalk.green(`given :-\n${JSON.stringify(given, null, " ")} \n`),
               chalk.red(`found :-\n${JSON.stringify(found, null, " ")}`)
             );
           }
         } else {
-          fail(key, "Contain:Object", target);
+          this.emit("fail", key, "Contain:Object");
           console.log(
             chalk.red(`expected object but found ${typeof found} \n `),
             chalk.green(`given :-\n${JSON.stringify(given, null, " ")} `),

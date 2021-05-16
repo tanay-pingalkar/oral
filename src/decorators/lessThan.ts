@@ -1,7 +1,4 @@
 import chalk from "chalk";
-import { fail, pass } from "../utils/prints";
-import "reflect-metadata";
-import { Add } from "../utils/add";
 
 export function LessThan(given: number): Function {
   return function (
@@ -10,13 +7,13 @@ export function LessThan(given: number): Function {
     descriptor: PropertyDescriptor
   ): PropertyDescriptor {
     const original = descriptor.value;
-    Add(key);
+    Reflect.defineMetadata("role", "assertion", target, key);
     descriptor.value = function (...args: any[]) {
       const found = original.apply(this, args);
       if (found < given) {
-        pass(key, "LessThan", target);
+        this.emit("pass", key, "LessThan");
       } else {
-        fail(key, "LessThan", target);
+        this.emit("fail", key, "LessThan");
         console.log(
           chalk.green(`found number :- ${found}\n`) +
             chalk.red(`is not less than :- ${given}`)

@@ -1,6 +1,7 @@
 import arg from "arg";
+import { argsReturn } from "../global";
 
-export const argParser = (args: Array<string>): any => {
+export const argParser = (args: Array<string>): argsReturn => {
   const parser = arg(
     {
       "--tsconfig": String,

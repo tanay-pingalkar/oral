@@ -2,6 +2,9 @@
 
 an open source decorator based testing framework for typescript
 
+##  important note 🚨 
+currenly it uses global variables that leads to bugs, I am working on a event based architecture, the api will probably remain same but the test runner will have some breaking changes. I will try to complete event based (global variable free) test  runner soon so dont worry. The new upcoming architecture will open possibilities of parallel processing and async tests.
+
 ## features
 
 - decorator based testing
@@ -74,8 +77,11 @@ all cli options can be inclue in `oral.config.ts`
 `@Before()` <br>
 `@After()` <br>
 `@Util()` <br>
+`@BeforeEach()` <br>
+`@AfterEach()` <br>
 more coming soon. <br>
-detailed examples in example/tests folder..
+detailed examples in example/tests folder... <br>
+continue reading to know more...
 
 ## @Before() and @After()
 
@@ -121,7 +127,7 @@ export class utilTest{
 }
 ```
 
-## beforeEveryone and afterEveryone
+## beforeEveryone & afterEveryone
 - `oral.config.ts`
 ``` typescript
 function Afunc(){
@@ -152,7 +158,6 @@ export class aTest{
 
 
 ## @Extend()
-
 ``` typescript
 import { Extend, Suite } from "oral";
 
@@ -175,8 +180,35 @@ export class extendDecoratorTest {
 }
 ```
 
+## @BeforeEach() & @AfterEach()
+``` typescript
+import { Suite, Equal, BeforeEach, AfterEach } from "oral";
+
+@Suite()
+export class beforeEveryone {
+  num = 0;
+  @BeforeEach()
+  beforeEach() {
+    this.num = this.num + 1;
+  }
+  @AfterEach()
+  beforeEach() {
+    this.num = 0;
+  }
+  @Equal(1)
+  checkIfEqualOne() {
+    return this.num;
+  }
+
+  @Equal(1)
+  checkIfEqualOneAgain() {
+    return this.num;
+  }
+}
+```
+
 ## philosophy
-Hello 🙂 i am tanay pingalkar a 14 year old nerd ( dont mistrust me becoz of my age! ) who like to make things that helps other and are open and free. I have created this testing framework for using the power of decorators and to give testers a complete new exciting workflow. This framework is typescript specific and dedicated to it. I currently dont have a good name but I call it "oral" (@ral) for some reason. Suggestion for name is needed. This project is open source and Licensed under [MIT License](https://github.com/tanay-pingalkar/oral/blob/main/LICENSE). I will like to see feedback on my product.
+Hello 🙂 i am tanay pingalkar a 14 year old nerd who like to code things that helps other and are open and free. I have created this testing framework for using the power of decorators and to give testers a complete new exciting workflow. This framework is typescript specific and dedicated to it. This framework believe that every assertion counts the quality of software and thats why every method in a class is a assertion. I currently dont have a good name but I call it "oral" (@ral) for some reason. Suggestion for name is needed. This project is open source and Licensed under [MIT License](https://github.com/tanay-pingalkar/oral/blob/main/LICENSE). I will like to see feedback and ideas on github issues to make it better.
 
 
 ## contribution

@@ -10,14 +10,6 @@ export function Suite(description?: string): Function {
     return res;
   }
   return function <T extends { new (...args: any[]): {} }>(constructor: T) {
-    // constructor.prototype.log = function () {
-    //   console.log(
-    //     `\n${chalk.bold.bgMagentaBright.black(
-    //       whatDescription(constructor.name)
-    //     )}`
-    //   );
-    // };
-
     let assertions: Set<symbol> = new Set([]);
     let utils: Set<symbol> = new Set([]);
     let beforeEach: symbol = null;
@@ -65,6 +57,7 @@ export function Suite(description?: string): Function {
       afterAll = afterAll;
       beforeEach = beforeEach;
       afterEach = afterEach;
+
       constructor(...args) {
         super(...args);
       }

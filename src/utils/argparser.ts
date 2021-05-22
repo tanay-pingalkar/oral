@@ -16,6 +16,7 @@ export const argParser = (args: Array<string>): argsReturn => {
       "--clear": Boolean,
       "--noclear": Boolean,
       "--notify": Boolean,
+      "--file": String,
       "-C": "--clear",
       "-W": "--watch",
       "-V": "--version",

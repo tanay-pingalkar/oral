@@ -8,7 +8,7 @@ export class GreaterThanTest {
   }
 
   @GreaterThan(5)
-  shouldGreaterThan5Fail() {
+  shouldGreaterThan54Fail() {
     return 35;
   }
 }

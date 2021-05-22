@@ -9,4 +9,5 @@ export default {
   afterEveryone: null,
   notify: false,
   tsconfig: "/tsconfig.json",
+  file: false,
 };

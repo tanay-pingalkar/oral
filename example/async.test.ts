@@ -7,7 +7,7 @@ function add(a: number, b: number) {
 @Suite("this is Async test")
 export class Test {
   @Equal(3)
-  async addTest() {
+  add_test() {
     return add(1, 2);
   }
 }

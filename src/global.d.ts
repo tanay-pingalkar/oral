@@ -26,6 +26,7 @@ export declare interface config {
   afterEveryone: Function;
   notify: Boolean;
   tsconfig: string;
+  file: boolean | string;
 }
 
 export declare interface testInfo {

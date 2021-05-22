@@ -17,7 +17,11 @@ export class Oral {
   constructor(args: argsReturn) {
     this.args = args;
     this.finalConfig();
-    this.CollectAllTestFiles();
+    if (this.config.file) {
+      this.getFile(this.config.file);
+    } else {
+      this.CollectAllTestFiles();
+    }
     this.beforeAllTest();
     this.RunAllTests();
     if (this.config.watch) {
@@ -79,5 +83,11 @@ export class Oral {
       this.testRunner.climax();
       console.log(chalk.bgGrey(centerString("watching for changes", 50)));
     });
+  }
+
+  getFile(fileName: string): Set<string> {
+    const theSet = new Set([path.join(process.cwd(), fileName + ".test.ts")]);
+    this.allTestFiles = theSet;
+    return theSet;
   }
 }

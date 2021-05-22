@@ -56,7 +56,7 @@ save and run
 and here you go..
 
 ## cli options
-oral `location of config file` `--watch` `--testDir /tests/` `--clear` `--noclear` `--help` `--version` `--nonotify` <br>
+oral `location of config file` `--watch` `--testDir /tests/` `--clear` `--noclear` `--help` `--version` `--notify` `--file name_of_file` <br>
 all cli options can be inclue in `oral.config.ts`
 
 ## Api
@@ -125,6 +125,7 @@ export class utilTest{
 ```
 
 ## beforeEveryone & afterEveryone
+do not support in new version currenly, available soon !!! `git checkout old` to use this 
 - `oral.config.ts`
 ``` typescript
 function Afunc(){

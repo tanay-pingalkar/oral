@@ -4,9 +4,24 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "label": "test",
+      "label": "example",
       "type": "shell",
-      "command": "npx oral"
+      "command": "yarn example"
+    },
+    {
+      "label": "dev",
+      "type": "shell",
+      "command": "yarn dev"
+    },
+    {
+      "label": "build",
+      "type": "shell",
+      "command": "yarn build"
+    },
+    {
+      "label": "format",
+      "type": "shell",
+      "command": "yarn format"
     }
   ]
 }

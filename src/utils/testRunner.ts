@@ -12,6 +12,7 @@ export class TestRunner {
   files: Set<string>;
   imported: Array<object> = [];
   result: Array<suit> = [];
+  globalObject: any;
 
   get testInfo(): testInfo {
     return testsInfo(this.result);
@@ -20,8 +21,15 @@ export class TestRunner {
   capsules: Array<Runner> = [];
   constructor(files: Set<string>) {
     this.files = files;
+    this.prologue();
     this.requireAndRun(this.files);
     this.climax();
+  }
+
+  prologue() {
+    if (global.Config.beforeEveryone) {
+      this.globalObject = global.Config.beforeEveryone();
+    }
   }
 
   requireAndRun(files: Set<string> = this.files) {
@@ -30,8 +38,7 @@ export class TestRunner {
       this.imported.push(required);
       for (const obj in required) {
         if (typeof required[obj] === "function") {
-          const runningCapsule = new Runner(required[obj]);
-
+          const runningCapsule = new Runner(required[obj], this.globalObject);
           this.capsules.push(runningCapsule);
           this.result.push(runningCapsule.info());
         }

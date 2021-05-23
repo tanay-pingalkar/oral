@@ -15,19 +15,21 @@ export class Runner extends EventEmitter {
   failed: Array<string> = [];
   obj: any;
   construct: any;
+  globalObj: any;
 
-  constructor(object: any) {
+  constructor(object: any, globalObject?: any) {
     super();
+    this.globalObj = globalObject;
     this.construct = object;
     this.configure();
     this.runAllAssertions();
   }
 
-  configure(): void | "not a suite" {
-    const obj = new this.construct();
+  configure(): void {
+    const obj = new this.construct(this.globalObj);
+    this.suitName = obj.suiteName;
     this.obj = obj;
     this.assertions = obj.assertions;
-    this.suitName = obj.suiteName;
 
     console.log(
       chalk.bold.bgMagentaBright.black(centerString(this.suitName, 50))

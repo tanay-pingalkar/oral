@@ -1,5 +1,7 @@
 # @ral
 
+[![Join the chat at https://gitter.im/oral-ts/community](https://badges.gitter.im/oral-ts/community.svg)](https://gitter.im/oral-ts/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 an open source decorator based testing framework for typescript
 
 ## features

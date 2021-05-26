@@ -7,10 +7,10 @@ import { pass, fail } from "./prints";
 export class Runner extends EventEmitter {
   assertions: Set<string> = new Set([]);
   suitName: string;
-  beforeAll = () => {};
-  afterAll = () => {};
-  beforeEach = () => {};
-  afterEach = () => {};
+  beforeAll: string;
+  afterAll: string;
+  beforeEach: string;
+  afterEach: string;
   passed: Array<string> = [];
   failed: Array<string> = [];
   obj: any;
@@ -22,7 +22,6 @@ export class Runner extends EventEmitter {
     this.globalObj = globalObject;
     this.construct = object;
     this.configure();
-    this.runAllAssertions();
   }
 
   configure(): void {
@@ -35,29 +34,28 @@ export class Runner extends EventEmitter {
       chalk.bold.bgMagentaBright.black(centerString(this.suitName, 50))
     );
 
-    if (obj.beforeAll) this.beforeAll = obj[obj.beforeAll];
-    if (obj.afterAll) this.afterAll = obj[obj.afterAll];
-    if (obj.beforeEach) this.beforeEach = obj[obj.beforeEach];
-    if (obj.afterEach) this.afterAll = obj[obj.afterEach];
+    if (obj.beforeAll) this.beforeAll = obj.beforeAll;
+    if (obj.afterAll) this.afterAll = obj.afterAll;
+    if (obj.beforeEach) this.beforeEach = obj.beforeEach;
+    if (obj.afterEach) this.afterAll = obj.afterEach;
+  }
 
-    obj.on("pass", (key: string, tag: string) => {
+  async runAllAssertions() {
+    this.obj.on("pass", (key: string, tag: string) => {
       this.passed.push(key);
       pass(key, tag);
     });
-    obj.on("fail", (key: string, tag: string) => {
+    this.obj.on("fail", (key: string, tag: string) => {
       this.failed.push(key);
       fail(key, tag);
     });
-  }
-
-  runAllAssertions() {
-    this.beforeAll();
-    this.obj.assertions.forEach((key) => {
-      this.beforeEach();
+    if (this.beforeAll) this.obj[this.beforeAll]();
+    for (const key of this.obj.assertions) {
+      if (this.beforeEach) this.obj[this.beforeEach]();
       this.obj[key]();
-      this.afterEach();
-    });
-    this.afterAll();
+      if (this.afterEach) this.obj[this.afterEach]();
+    }
+    if (this.afterAll) this.obj[this.afterAll]();
   }
 
   info(): suit {

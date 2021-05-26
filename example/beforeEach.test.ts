@@ -1,7 +1,7 @@
 import { Suite, Equal, BeforeEach, AfterEach } from "oral";
 
 @Suite()
-export class beforeEveryone {
+export class beforeEach {
   num = 0;
 
   @BeforeEach()

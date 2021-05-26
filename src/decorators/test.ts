@@ -1,6 +1,6 @@
 import chalk from "chalk";
 
-export function False(): Function {
+export function Test(): Function {
   return function (
     target: Object,
     key: string,
@@ -10,14 +10,6 @@ export function False(): Function {
     Reflect.defineMetadata("role", "assertion", target, key);
     descriptor.value = function (...args: any[]) {
       const found = original.apply(this, args);
-      if (found) {
-        this.emit("fail", key, "False");
-        console.log(
-          chalk.green(`given :- false \n`) + chalk.red(`found :- ${found}`)
-        );
-      } else {
-        this.emit("pass", key, "False");
-      }
       return found;
     };
     return descriptor;

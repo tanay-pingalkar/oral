@@ -5,7 +5,6 @@ import { centerString } from "./centerString";
 import { suit, testInfo } from "../global";
 import { testsInfo } from "./testInfo";
 import { Runner } from "./runner";
-import EventEmitter from "events";
 const notifier = require("node-notifier");
 
 export class TestRunner {
@@ -22,8 +21,9 @@ export class TestRunner {
   constructor(files: Set<string>) {
     this.files = files;
     this.prologue();
-    this.requireAndRun(this.files);
-    this.climax();
+    this.requireAndRun(this.files).then(() => {
+      this.climax();
+    });
   }
 
   prologue() {
@@ -32,13 +32,14 @@ export class TestRunner {
     }
   }
 
-  requireAndRun(files: Set<string> = this.files) {
+  async requireAndRun(files: Set<string> = this.files) {
     for (const file of files.values()) {
       const required = require(file);
       this.imported.push(required);
       for (const obj in required) {
         if (typeof required[obj] === "function") {
           const runningCapsule = new Runner(required[obj], this.globalObject);
+          await runningCapsule.runAllAssertions();
           this.capsules.push(runningCapsule);
           this.result.push(runningCapsule.info());
         }

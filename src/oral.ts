@@ -18,7 +18,7 @@ export class Oral {
     this.args = args;
     this.finalConfig();
     if (this.config.file) {
-      this.getFile(this.config.file);
+      this.getFile(this.config.file as string);
     } else {
       this.CollectAllTestFiles();
     }

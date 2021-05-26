@@ -7,5 +7,8 @@ export const centerString = (string: string, max: number): string => {
   for (let i = 0; i <= space; i++) {
     base.unshift(" ");
   }
+  if (base.length != max + 2) {
+    base.push(" ");
+  }
   return base.join("");
 };

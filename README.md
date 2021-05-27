@@ -6,6 +6,7 @@ an open source decorator based testing framework for typescript
 
 - decorator based testing
 - watch mode
+- async in progress
 
 ## install
 
@@ -210,16 +211,6 @@ Hello 🙂 i am tanay pingalkar a 14 year old nerd who like to code things that 
 
 
 ## contribution
-this porject is open source and will always live open source. Contributer's are highly welcome and appreciated. You can contribute to us by following means.
-- leaving a star 😉
-- feedback on github issue
-- making docs and fixing typos
-- contribute to direct source code
-
-## local env
-`fork the repo and clone it` <br>
-`npm install` <br>
-`cd examples && npm install` <br>
-`cd .. && npm build` <br>
-`oral` <br>
+this porject is open source and will always live open source. Contributer's are highly welcome and appreciated. You can read [CONTRIBUTING.md](https://github.com/tanay-pingalkar/oral/blob/main/CONTRIBUTING.md) and [CODE_OF_CONDUCT.md](https://github.com/tanay-pingalkar/oral/blob/main/CODE_OF_CONDUCT.md)
+to know more about contribution process.
 

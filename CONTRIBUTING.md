@@ -5,20 +5,25 @@ You can contribute to `oral` by many ways.
 - making better and upto date documentation.
 - fixing typos if you see any
 
-
 To setup this project on you local machine, you will need to fork and clone the repo.
 Then -
-``` 
-navigate to project dir 
+
 ```
-``` 
-npm install 
+navigate to project dir
 ```
-``` 
-npm dev 
-``` 
+
+```
+npm install
+```
+
+```
+npm dev
+```
+
 to compile typescript.
-``` 
-npm example 
-``` 
+
+```
+npm example
+```
+
 to test the example folder.

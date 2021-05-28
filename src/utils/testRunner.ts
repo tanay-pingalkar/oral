@@ -8,7 +8,6 @@ import { Runner } from "./runner";
 const notifier = require("node-notifier");
 
 export class TestRunner {
-  files: Set<string>;
   imported: Array<object> = [];
   result: Array<suit> = [];
   globalObject: any;
@@ -18,8 +17,7 @@ export class TestRunner {
   }
 
   capsules: Array<Runner> = [];
-  constructor(files: Set<string>) {
-    this.files = files;
+  constructor(public files: Set<string>) {
     this.prologue();
     this.requireAndRun(this.files).then(() => {
       this.climax();

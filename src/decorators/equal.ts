@@ -30,7 +30,7 @@ export function Equal<type>(given: any | type): Function {
     descriptor.value = function (...args: any[]) {
       let found = original.apply(this, args);
 
-      if (found) {
+      if (found !== undefined) {
         if (found.constructor.name === "Promise") {
           found.then((found: any) => resolver.apply(this, [given, found, key]));
         } else resolver.apply(this, [given, found, key]);

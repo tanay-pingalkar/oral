@@ -21,7 +21,7 @@ export function False(): Function {
     Reflect.defineMetadata("role", "assertion", target, key);
     descriptor.value = function (...args: any[]) {
       const found = original.apply(this, args);
-      if (found) {
+      if (found !== undefined) {
         if (found.constructor.name === "Promise") {
           found.then((found: any) => resolver.apply(this, [found, key]));
         } else resolver.apply(this, [found, key]);

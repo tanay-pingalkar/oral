@@ -1,4 +1,4 @@
-import { Equal, Suite } from "oral";
+import { Equal, Suite, True, False, Contain, Typeof, Instanceof } from "oral";
 
 function add(a: number, b: number) {
   return a + b;
@@ -7,7 +7,12 @@ function add(a: number, b: number) {
 @Suite("this is Async test")
 export class Test {
   @Equal(3)
-  async add_test() {
+  @True()
+  @False()
+  @Contain(2)
+  @Typeof("number")
+  @Instanceof(Number)
+  async async_test() {
     return add(1, 2);
   }
 }

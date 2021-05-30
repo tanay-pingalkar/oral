@@ -49,13 +49,13 @@ export class Runner extends EventEmitter {
       this.failed.push(key);
       fail(key, tag);
     });
-    if (this.beforeAll) this.obj[this.beforeAll]();
+    if (this.beforeAll) await this.obj[this.beforeAll]();
     for (const key of this.obj.assertions) {
-      if (this.beforeEach) this.obj[this.beforeEach]();
+      if (this.beforeEach) await this.obj[this.beforeEach]();
       await this.obj[key]();
-      if (this.afterEach) this.obj[this.afterEach]();
+      if (this.afterEach) await this.obj[this.afterEach]();
     }
-    if (this.afterAll) this.obj[this.afterAll]();
+    if (this.afterAll) await this.obj[this.afterAll]();
   }
 
   info(): suit {

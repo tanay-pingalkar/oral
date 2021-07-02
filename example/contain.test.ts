@@ -1,4 +1,4 @@
-import { Contain, Suite } from "oral";
+import { Contain, Suite } from "oral-ts";
 
 @Suite("this is  Contain decorator test")
 export class atest {

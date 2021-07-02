@@ -1,4 +1,4 @@
-import { Equal, Suite, Util } from "oral";
+import { Equal, Suite, Util } from "oral-ts";
 
 @Suite()
 export class testingUtil {

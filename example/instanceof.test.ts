@@ -1,4 +1,4 @@
-import { Suite, Instanceof } from "oral";
+import { Suite, Instanceof } from "oral-ts";
 
 @Suite()
 export class instanceTesting {

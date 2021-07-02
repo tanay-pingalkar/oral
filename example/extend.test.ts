@@ -1,4 +1,4 @@
-import { Extend, Suite } from "oral";
+import { Extend, Suite } from "oral-ts";
 
 const decoratorFunc = (found) => {
   if (found === "a string") return true;

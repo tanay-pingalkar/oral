@@ -1,4 +1,4 @@
-import { Suite, Equal } from "oral";
+import { Suite, Equal } from "oral-ts";
 
 @Suite()
 export class beforeEveryone {

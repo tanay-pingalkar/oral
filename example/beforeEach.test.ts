@@ -1,4 +1,4 @@
-import { Suite, Equal, BeforeEach, AfterEach } from "oral";
+import { Suite, Equal, BeforeEach, AfterEach } from "oral-ts";
 
 @Suite()
 export class beforeEach {

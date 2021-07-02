@@ -1,4 +1,4 @@
-import { Match, Suite } from "oral";
+import { Match, Suite } from "oral-ts";
 
 @Suite("this is Match decorator test test")
 export class Test {

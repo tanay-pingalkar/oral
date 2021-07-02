@@ -1,4 +1,4 @@
-import { Equal, Suite, True, False, Contain, Typeof, Instanceof } from "oral";
+import { Equal, Suite, True, False, Contain, Typeof, Instanceof } from "oral-ts";
 
 function add(a: number, b: number) {
   return a + b;

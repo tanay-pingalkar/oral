@@ -1,4 +1,4 @@
-import { Suite, LessThan } from "oral";
+import { Suite, LessThan } from "oral-ts";
 
 @Suite()
 export class LessThanTest {

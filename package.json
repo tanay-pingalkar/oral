@@ -43,7 +43,7 @@
     "chokidar": "^3.5.1",
     "esm": "^3.2.25",
     "node-notifier": "^9.0.1",
-    "oral": "file:.",
+    "oral-ts": "^1.0.1",
     "reflect-metadata": "^0.1.13",
     "ts-mixer": "^5.4.1",
     "ts-node": "^9.1.1"

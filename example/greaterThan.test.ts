@@ -1,4 +1,4 @@
-import { Suite, GreaterThan } from "oral";
+import { Suite, GreaterThan } from "oral-ts";
 
 @Suite()
 export class GreaterThanTest {

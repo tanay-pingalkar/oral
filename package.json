@@ -22,7 +22,7 @@
     "build": "tsc",
     "format": "prettier --write . && prettier --check .",
     "example": "npx oral --testDir /example/",
-    "test": "npm run example"
+    "test": "npm exec oral-ts"
   },
   "keywords": [
     "oral"

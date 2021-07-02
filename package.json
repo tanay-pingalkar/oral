@@ -21,7 +21,8 @@
     "dev": "tsc --watch",
     "build": "tsc",
     "format": "prettier --write . && prettier --check .",
-    "example": "npx oral --testDir /example/"
+    "example": "npx oral --testDir /example/",
+    "test": "npm run example"
   },
   "keywords": [
     "oral"

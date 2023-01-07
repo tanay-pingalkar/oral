@@ -215,7 +215,7 @@ export class beforeEveryone {
 
 ## philosophy
 
-Hello 🙂 i am tanay pingalkar. I like to code things that helps other and are open and free. I have created this testing framework for using the power of decorators and to give testers a complete new exciting workflow. This framework is typescript specific and dedicated to it. This framework believe that every assertion counts the quality of software and thats why every method in a class is a assertion. I currently dont have a good name but I call it "oral" (@ral) for some reason. Suggestion for name is needed. This project is open source and Licensed under [MIT License](https://github.com/tanay-pingalkar/oral/blob/main/LICENSE). I will like to see feedback and ideas on github issues to make it better.
+Hello i am tanay pingalkar. I like to code things that helps other and are open and free. I have created this testing framework for using the power of decorators and to give testers a complete new exciting workflow. This framework is typescript specific and dedicated to it. This framework believe that every assertion counts the quality of software and thats why every method in a class is a assertion. I currently dont have a good name but I call it "oral" (@ral) for some reason. Suggestion for name is needed. This project is open source and Licensed under [MIT License](https://github.com/tanay-pingalkar/oral/blob/main/LICENSE). I will like to see feedback and ideas on github issues to make it better.
 
 ## contribution
 
